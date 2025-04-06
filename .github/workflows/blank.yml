@@ -1,4 +1,4 @@
-name: Build and Push Docker Image (Prod)
+name: Test, Build and Push Docker Image (Prod)
 
 on:
   push:
@@ -6,8 +6,29 @@ on:
       - prod 
 
 jobs:
-  build:
+  test:
+    name: Run Node.js Tests
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+  build-and-push:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+    needs: test 
 
     steps:
       - name: Checkout code
@@ -27,4 +48,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: your-docker-username/your-image-name:latest
+          tags: dilshan7542/web-services:latest
