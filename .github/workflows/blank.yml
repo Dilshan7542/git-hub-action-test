@@ -48,4 +48,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: dilshan7542/web-services:latest
+          tags: dilshan7542/testnode:latest
