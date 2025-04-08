@@ -20,7 +20,7 @@ app.get("/",(req,res)=>{
     <title>Service 02</title>
 </head>
 <body style="background-color: rgb(128, 81, 214);">
-    <h1>Hello this is <b style="color: red;">Service 01</b></h1>
+    <h1>Hello this is 2 <b style="color: red;">Service 01</b></h1>
 </body>
 </html>
         
